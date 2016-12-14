@@ -16,6 +16,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 import store.backend.CrudService;
+import store.model.Product;
 
 /**
  *
@@ -32,18 +33,20 @@ public class MyUI extends UI {
 		final TextField name = new TextField();
 		name.setCaption("Type name here:");
 		final TextField price = new TextField();
+		price.setConverter(Float.class);
 		price.setCaption("Type price here:");
 		final TextField amount = new TextField();
 		amount.setCaption("Type amount here:");
+		amount.setConverter(Integer.class);
 
 		Button button = new Button("Click Me");
 		button.addClickListener(e -> {
 			String prodPrice = price.getValue();
 			String prodAmount = amount.getValue();
-			Long convertedPrice = null;
+			Float convertedPrice = null;
 			Integer convertedAmount = null;
 			try {
-				convertedPrice = (Long) price.getConvertedValue();
+				convertedPrice = (Float) price.getConvertedValue();
 				Notification
 						.show("UI value (String): " + prodPrice + "<br />Converted value (Long): " + convertedPrice);
 			} catch (ConversionException ex1) {
@@ -68,7 +71,7 @@ public class MyUI extends UI {
 
 		// This is a component from the store_catalog-addon module
 		// layout.addComponent(new MyComponent());
-		layout.addComponents(name, button, grid);
+		layout.addComponents(name, price, amount, button, grid);
 		layout.setSizeFull();
 		layout.setMargin(true);
 		layout.setSpacing(true);

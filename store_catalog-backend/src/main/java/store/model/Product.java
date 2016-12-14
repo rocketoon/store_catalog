@@ -1,15 +1,15 @@
-package store;
+package store.model;
 
 public class Product {
 
 	private String name;
-	private long price;
+	private float price;
 	private int amount;
 
 	public Product() {
 	};
 
-	public Product(String name, long price, int amount) {
+	public Product(String name, float price, int amount) {
 		this.setName(name);
 		this.setPrice(price);
 		this.setAmount(amount);
@@ -23,11 +23,11 @@ public class Product {
 		this.name = name;
 	}
 
-	public long getPrice() {
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(long price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 
