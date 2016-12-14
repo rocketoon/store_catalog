@@ -1,15 +1,27 @@
 package store.model;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity
 public class Product {
 
+	@SequenceGenerator(name = "gen_product", sequenceName = "seq_product", allocationSize = 1)
+	@Id
+	@GeneratedValue(generator = "gen_product")
+	private long id;
 	private String name;
-	private float price;
+	private BigDecimal price;
 	private int amount;
 
 	public Product() {
 	};
 
-	public Product(String name, float price, int amount) {
+	public Product(String name, BigDecimal price, int amount) {
 		this.setName(name);
 		this.setPrice(price);
 		this.setAmount(amount);
@@ -23,11 +35,11 @@ public class Product {
 		this.name = name;
 	}
 
-	public float getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

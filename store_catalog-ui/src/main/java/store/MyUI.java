@@ -1,5 +1,7 @@
 package store;
 
+import java.math.BigDecimal;
+
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
@@ -33,7 +35,7 @@ public class MyUI extends UI {
 		final TextField name = new TextField();
 		name.setCaption("Type name here:");
 		final TextField price = new TextField();
-		price.setConverter(Float.class);
+		price.setConverter(BigDecimal.class);
 		price.setCaption("Type price here:");
 		final TextField amount = new TextField();
 		amount.setCaption("Type amount here:");
@@ -43,10 +45,10 @@ public class MyUI extends UI {
 		button.addClickListener(e -> {
 			String prodPrice = price.getValue();
 			String prodAmount = amount.getValue();
-			Float convertedPrice = null;
+			BigDecimal convertedPrice = null;
 			Integer convertedAmount = null;
 			try {
-				convertedPrice = (Float) price.getConvertedValue();
+				convertedPrice = (BigDecimal) price.getConvertedValue();
 				Notification
 						.show("UI value (String): " + prodPrice + "<br />Converted value (Long): " + convertedPrice);
 			} catch (ConversionException ex1) {
